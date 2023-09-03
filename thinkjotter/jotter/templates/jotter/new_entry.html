@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Journal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+		a {
+			color: black;
+		}
+    body {
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 700px;
+      padding: 15px;
+    }
+    .side-container {
+      float: left;
+      width: 300px;
+      margin-right: 30px;
+			background-color: #dcdcdc;
+			min-height: 100vh;
+			margin-left: 30px;
+    }
+    h1, h2 {
+      color: #286629;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px 0;
+    }
+    form label {
+      font-weight: bold;
+    }
+		nav{
+			margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+	<div class="container side-container">
+    <nav>
+        <li><a href="{% url 'jotter:all_entries' %}">All Entries</a></li>
+				<li>Search by Category</li>
+				<li>Search by Hashtag</li>
+        <li><a href="{% url 'jotter:new_entry' %}">Compose New Entry</a></li>
+    </nav>
+  </div>
+
+
+  <div class="container" id="new_entry_form">
+    <h1>Compose New Entry</h1>
+      <form method="POST">
+          {% csrf_token %}
+          {{ form1.as_p }}
+          {{ form2.as_p }}
+          <input type="submit" value="Submit">
+      </form>
+  </div>
+</body>
+</html>
